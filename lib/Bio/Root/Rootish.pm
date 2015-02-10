@@ -15,12 +15,13 @@ use Data::Dumper;
 
 extends qw(Bio::Root::Root);
 
+# pull in role methods (these should supercede the above if pulled in after,
+# let's test that)
 with qw(Bio::Role::Root);
 
 no Bio::Root::MOP;
-# no need to fiddle with inline_constructor here
 
-__PACKAGE__->meta->make_immutable(inline_constructor => 0);
+__PACKAGE__->meta->make_immutable();
 
 1;
 

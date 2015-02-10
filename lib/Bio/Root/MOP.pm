@@ -14,7 +14,10 @@ Moose::Exporter->setup_import_methods(
     base_class_roles => ['Bio::Role::Root']
 );
 
+__PACKAGE__->meta->make_immutable();
+
 1;
 
 __END__
+
 

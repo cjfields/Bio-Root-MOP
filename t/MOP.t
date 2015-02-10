@@ -2,24 +2,29 @@ use strict;
 use warnings;
 
 BEGIN {
-	use lib '.';
-	use Test::More tests   => 13;
-	use Test::Moose;
-	use Test::Exception;
+    use lib '.';
+    use Test::More tests   => 13;
+    use Test::Moose;
+    use Test::Exception;
 }
 
-our $VERBOSE = $ENV{BIOME_DEBUG} || 0;
+our $VERBOSE = $ENV{BIOPERL_DEBUG} || 0;
 
 ###############################
 
 # import Moose magic through meta class (no need to import separately)
-package MyClass1;
 
-use Bio::Root::MOP; # implied base class is Bio::Root::Root
+{
 
-has 'test1' => ( is => 'rw');
+    package MyClass1;
+    
+    use Bio::Root::MOP; # implied base class is Bio::Root::Root
+    
+    has 'test1' => ( is => 'rw');
+    
+    no Bio::Root::MOP;
 
-no Bio::Root::MOP;
+}
 
 package main;
 
