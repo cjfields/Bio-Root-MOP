@@ -6,83 +6,19 @@ our $VERSION = '0.001';
 # OWNER:    Chris Fields
 # LICENSE:  Perl_5
 
+use 5.016;
 use Bio::Root::MOP;
 use namespace::autoclean;
 use MooseX::NonMoose;
-use Bio::Root::RootI;
 use Method::Signatures;
+use Data::Dumper;
 
-extends qw(Bio::Root::RootI);
+extends qw(Bio::Root::Root);
+
 with qw(Bio::Role::Root);
 
-#sub new {
-##    my ($class, %param) = @_;
-#    my $class = shift;
-#    my $self = {};
-#    bless $self, ref($class) || $class;
-#
-#    if(@_ > 1) {
-#        # if the number of arguments is odd but at least 3, we'll give
-#        # it a try to find -verbose
-#        shift if @_ % 2;
-#        my %param = @_;
-#        ## See "Comments" above regarding use of _rearrange().
-#        #$self->verbose($param{'-VERBOSE'} || $param{'-verbose'});
-#    }
-#    return $self;
-#}
-
-method throw() {
-    ...
-}
-
-method warn() {
-    ...
-}
-
-method deprecated() {
-    ...
-}
-
-method stack_trace_dump() {
-    ...
-}
-
-method stack_trace() {
-    ...
-}
-
-method throw_not_implemented() {
-    ...
-}
-
-method warn_not_implemented() {
-    ...
-}
-
-method _not_implemented_msg() {
-    ...
-}
-
-method _rearrange() {
-    ...
-}
-
-method _set_from_args() {
-    ...
-}
-
-method _register_for_cleanup() {
-    ...
-}
-
-method _unregister_for_cleanup() {
-    ...
-}
-
-method _cleanup_methods() {
-    ...
-}
+no Bio::Root::MOP;
+# no need to fiddle with inline_constructor here
 
 __PACKAGE__->meta->make_immutable(inline_constructor => 0);
 
